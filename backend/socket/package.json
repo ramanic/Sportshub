@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Realtime chat app configuration",
   "main": "index.js",
-  "author": "Manish Acharya",
+  "author": "Raman Lamichhane",
   "scripts": {
     "start": "nodemon index.js"
   },
