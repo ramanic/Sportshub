@@ -1,0 +1,2718 @@
+{
+	"info": {
+		"_postman_id": "0da31088-e6bf-49b3-8f2b-dd3146f7077d",
+		"name": "SportsHub",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9826052"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.json().data){\r",
+									"pm.environment.set(\"jwt\", pm.response.json().data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"manish\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if(pm.response.json().data){\r",
+									"pm.environment.set(\"jwt\", pm.response.json().data.token);\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Raman\",\n    \"email\":\"raman12@gmail.com\",\n    \"username\":\"raman12\",\n    \"password\":\"1234562\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/register",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token Test",
+					"request": {
+						"auth": {
+							"type": "basic"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjI4YzQzMTQ5ODgwNmU4OTQzYmM1OGU1IiwiZW1haWwiOiJyYW1hbjFAZ21haWwuY29tIiwiaWF0IjoxNjUzMzYwNTAzLCJleHAiOjE2NTMzNjc3MDN9.1r5-6Q2tsc9DkcasqyPVWAWWg5n7cDYziy2nkvEdDeE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/welcome?token={{jwt}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"welcome"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{jwt}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Personal Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notifications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/notifications",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notifications Read",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/notifications/read/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"notifications",
+								"read",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62ebee67ee708a1b4f5d0105"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Notifications Read All",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/notifications/readAll",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"notifications",
+								"readAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/user/manish",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"user",
+								"manish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"ram\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/profile/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Photo Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/profile/photo/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"photo",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Friend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"manish10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/profile/add-friend",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"add-friend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Friend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"62a57c00a0989cc34fb2b8fd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/profile/accept-friend",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"accept-friend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Friend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"62a57c00a0989cc34fb2b8fd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/profile/remove-friend",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"remove-friend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Friend List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/profile/friends",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"profile",
+								"friends"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "received",
+									"description": "sent | received | null",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop Product",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text"
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recomended Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/recomended",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"recomended"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Single Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/view/62a60b860dd61c8a3d6ebd6e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"view",
+								"62a60b860dd61c8a3d6ebd6e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text"
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/delete/62a60bb40dd61c8a3d6ebd77",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"delete",
+								"62a60bb40dd61c8a3d6ebd77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review a Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reviewText\":\"great product\",\r\n    \"reviewNumber\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/product/review/62d0530783031c7efe9e8551",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"review",
+								"62d0530783031c7efe9e8551"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Helmet",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text"
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/update/62a60bdb0dd61c8a3d6ebd80",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"update",
+								"62a60bdb0dd61c8a3d6ebd80"
+							],
+							"query": [
+								{
+									"key": "namr",
+									"value": "Helmet",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buy Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\":[\n        {\n            \"_id\":\"62a60b860dd61c8a3d6ebd6e\",\n            \"image\":\"http://res.cloudinary.com/detthjb49/image/upload/v1655049094/undndnifs3sdy1umqrgz.jpg\",\n            \"name\":\"Kookaburra Cricket Bat Blue\",\n            \"price\":73,\n            \"category\":\"Cricket\",\n            \"tags\":[\n                \n            ],\n            \"quantity\":2\n        },\n        {\n            \"_id\":\"62a60bdb0dd61c8a3d6ebd80\",\n            \"image\":\"http://res.cloudinary.com/detthjb49/image/upload/v1655049180/kszvcy7psv57e6afycnx.jpg\",\n            \"name\":\"Helmet\",\n            \"price\":62,\n            \"category\":\"Football\",\n            \"tags\":[\n                \n            ],\n            \"quantity\":1\n        },\n        {\n            \"_id\":\"62a60bfe0dd61c8a3d6ebd89\",\n            \"image\":\"http://res.cloudinary.com/detthjb49/image/upload/v1655049214/nk0fjzo7y9rup1uu0e3r.jpg\",\n            \"name\":\"Green Kookaburra bat\",\n            \"price\":124,\n            \"category\":\"Cricket\",\n            \"tags\":[\n                \n            ],\n            \"quantity\":1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/product/buy/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"buy",
+								""
+							],
+							"query": [
+								{
+									"key": "qty",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/orders/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View My order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/orders/my",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"orders",
+								"my"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/product/save/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"product",
+								"save",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62d0530783031c7efe9e8551"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "View All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/user/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recomended User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/user/recomended",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"recomended"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Add Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/Users/raman/Pictures/17.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Friends Post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/friends",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"friends"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Single Post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/view/62aaaaa7ef0f9db953d80a1c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"view",
+								"62aaaaa7ef0f9db953d80a1c"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/like/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"like",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62ebe8c18ba6d7463f4dd0eb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\":\"Hi This is my commnet hiiii\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/post/comment/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62ebe8c18ba6d7463f4dd0eb"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/delete/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62c253793ed86b5e35ff588a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/comment/:id/delete",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"comment",
+								":id",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62c2a3062d014ddafb52c616"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/save/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"save",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62c253793ed86b5e35ff588a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Posts Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/post/all",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"post",
+								"all"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Venue",
+			"item": [
+				{
+					"name": "Add   Venue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Hamro Futsal Ramro Futsal",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/Users/raman/Pictures/17.jpg"
+								},
+								{
+									"key": "description",
+									"value": "Very Goood Venue",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Cricket",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "{\"longitude\":\"80\",\"latitude\":\"80\"}",
+									"type": "text"
+								},
+								{
+									"key": "district",
+									"value": "Jhapa",
+									"type": "text"
+								},
+								{
+									"key": "city",
+									"value": "Anarmani",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/add",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Venues",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/get",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"get"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "unverified",
+									"description": "unverified,all(If left empy only verified)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My venues",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/venue/my-venues/get",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"my-venues",
+								"get"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"disabled": true
+								},
+								{
+									"key": "filter",
+									"value": "unverified",
+									"description": "unverified,all(If left empy only verified)",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Venue",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/get/62d405167f775880c13fdbbd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"get",
+								"62d405167f775880c13fdbbd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Venue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Hamro Futsal Ramro Futsal",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/Users/raman/Pictures/240414268_365339058405386_1806162981887479386_n.jpg"
+								},
+								{
+									"key": "description",
+									"value": "Very Very Goood Venue",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Cricket",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "{\"longitude\":\"2121123\",\"latitude\":\"234243\"}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/update/62d3fc15a82884e46fd70f75",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"update",
+								"62d3fc15a82884e46fd70f75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Venue Schedule",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"default_timing\": [\n        {\n            \"startTime\": \"8:00\",\n            \"endTime\": \"9:00\",\n            \"price\": \"100\"\n        },\n        {\n            \"startTime\": \"9:00\",\n            \"endTime\": \"10:00\",\n            \"price\": \"100\"\n        }\n    ],\n    \"days\": [\n        {\n            \"day\": \"mon\",\n            \"timing\": [\n                {\n                    \"startTime\": \"8:00\",\n                    \"endTime\": \"9:00\",\n                    \"price\": \"100\",\n                    \"_id\": \"62d57bc493fa3bc446e1a01c\"\n                },\n                {\n                    \"startTime\": \"9:00\",\n                    \"endTime\": \"10:00\",\n                    \"price\": \"100\",\n                    \"_id\": \"62d57bc493fa3bc446e1a01d\"\n                }\n            ],\n            \"_id\": \"62d57bc493fa3bc446e1a01b\"\n        },\n        {\n            \"day\": \"tue\",\n            \"timing\": [\n                {\n                    \"startTime\": \"8:00\",\n                    \"endTime\": \"9:00\",\n                    \"price\": \"100\",\n                    \"_id\": \"62d57bc493fa3bc446e1a01f\"\n                },\n                {\n                    \"startTime\": \"9:00\",\n                    \"endTime\": \"10:00\",\n                    \"price\": \"100\",\n                    \"_id\": \"62d57bc493fa3bc446e1a020\"\n                }\n            ],\n            \"_id\": \"62d57bc493fa3bc446e1a01e\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/venue/schedule/update/62d5413a3f395a4efb30e7fa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"schedule",
+								"update",
+								"62d5413a3f395a4efb30e7fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Venue Schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/availability/:venue?date=2022-08-09",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"availability",
+								":venue"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-08-09"
+								}
+							],
+							"variable": [
+								{
+									"key": "venue",
+									"value": "62d5413a3f395a4efb30e7fa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review a Venue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reviewText\":\"great product\",\r\n    \"reviewNumber\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/venue/review/62d5413a3f395a4efb30e7fa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"review",
+								"62d5413a3f395a4efb30e7fa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Venue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "caption",
+									"value": "Hello Helllo",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/save/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"save",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62d5413a3f395a4efb30e7fa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Book Venue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startTime\": \"10:00\",\n    \"endTime\": \"11:00\",\n    \"date\": \"2022-08-09\",\n    \"address\": \"Anarmani, Jhapa\",\n    \"email\": \"manish@mail.com\",\n    \"name\": \"Manish Acharya\",\n    \"phoneNumber\": \"9822215144\",\n    \"challenge\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/venue/book/:id",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"book",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62d5413a3f395a4efb30e7fa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recomended Venue",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "My Product",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "A simple product description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Football",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "availableQty",
+									"value": "10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/raman/Pictures/269774.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/venue/recomended",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"recomended"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Aggregation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/venue/my-venues/aggregate",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"venue",
+								"my-venues",
+								"aggregate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Create new conversation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\":\"62a5b5287c13476e50236736\",\r\n    \"receiverId\":\"62c29dea23def22398f8d261\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/conversation",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"conversation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a user conversation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\":\"62a5b5287c13476e50236736\",\r\n    \"receiverId\":\"62a57c00a0989cc34fb2b8fd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/conversation",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"conversation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conversationId\":\"62d378803a7152bb12595376\",\r\n    \"sender\":\"62a5b5287c13476e50236736\",\r\n    \"text\":\"Pelase check your email\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/message",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get conversation messages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"senderId\":\"62a5b5287c13476e50236736\",\r\n    \"receiverId\":\"62a57c00a0989cc34fb2b8fd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/message/62d378593a7152bb12595374",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"message",
+								"62d378593a7152bb12595374"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "Realtime chat app configuration",
+  "main": "index.js",
+  "author": "Manish Acharya",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "nodemon": "^2.0.19",
+    "socket.io": "^4.5.1"
+  }
+}

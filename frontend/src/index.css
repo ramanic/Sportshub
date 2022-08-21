@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+/* html {
+  overflow-y: auto;
+} */
+
+body {
+  /* font-family: "Poppins", sans-serif !important; */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+}
+
+.mantine-Button-root,
+.mantine-Textarea-defaultVariant,
+.mantine-Select-defaultVariant,
+.mantine-DatePicker-defaultVariant,
+.mantine-PasswordInput-innerInput,
+.mantine-TextInput-defaultVariant,
+.mantine-NumberInput-defaultVariant,
+.mantine-Tabs-tabLabel,
+.mantine-Select-input {
+  font-weight: 500;
+}
+
+.mantine-MultiSelect-searchInput {
+  font-family: Montserrat;
+  font-weight: 500;
+}
+
+.mantine-TextInput-error,
+.mantine-PasswordInput-error,
+.mantine-DatePicker-error,
+.mantine-RadioGroup-error,
+.mantine-Textarea-error,
+.mantine-NumberInput-error,
+.mantine-Select-error,
+.dropzone-upload-error,
+.mantine-MultiSelect-error {
+  font-size: 75%;
+  font-weight: 500;
+}
+
+.mantine-Progress-root {
+  height: 22px;
+}
+
+/* For shop filter products */
+.mantine-Accordion-control {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mantine-Stepper-stepDescription {
+  margin-top: 0;
+}
+
+.right-content-sticky-mt {
+  top: calc(var(--mantine-header-height, 0px) + 16px);
+}
+
+.hide-y-scroll {
+  overflow-y: scroll;
+  position: fixed;
+}
+
+/* CUSTOMIZE IMAGE SWIPER BUTTONS */
+
+.swiper-button-disabled {
+  display: none;
+}
