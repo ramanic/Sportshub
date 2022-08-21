@@ -48,22 +48,19 @@ Sportshub is a social media for sports enthusiasts with additonal features like 
 
 ## Screenshots:
 
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss3.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss4.png" width="800px"></img>
-
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss5.png" width="800px"></img>
-
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss6.png" width="800px"></img>
-
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss7.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss8.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss9.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss10.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss11.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss12.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss13.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss14.png" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss15.png" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss3.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss4.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss5.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss6.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss7.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss8.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss9.jpg width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss10.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss11.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss12.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss13.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss14.jpg" width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss15.jpg" width="800px"></img>
 
 ## Database Models:
 
