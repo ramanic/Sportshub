@@ -50,9 +50,10 @@ Sportshub is a social media for sports enthusiasts with additonal features like 
 - Redux
 
 <hr>
-# Screenshots:
 
-<br>
-# Database Models :
+## Screenshots:
+
+
+## Database Models:
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss1.png" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss2.jpg" width="800px"></img>
