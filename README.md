@@ -49,7 +49,7 @@ Sportshub is a social media for sports enthusiasts with additonal features like 
 - Mantine UI
 - Redux
 
-<hr>
+
 
 ## Screenshots:
 
