@@ -54,7 +54,7 @@ Sportshub is a social media for sports enthusiasts with additonal features like 
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss6.jpg" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss7.jpg" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss8.jpg" width="800px"></img>
-<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss9.jpg width="800px"></img>
+<img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss9.jpg" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss10.jpg" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss11.jpg" width="800px"></img>
 <img src="https://github.com/ramanic/Sportshub-MERN/raw/main/ss/ss12.jpg" width="800px"></img>
